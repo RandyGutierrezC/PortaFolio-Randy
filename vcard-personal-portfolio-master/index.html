@@ -1145,7 +1145,7 @@
         <section class="mapbox" data-mapbox>
           <figure>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31009.023250841277!2d-89.75109624690182!3d13.710702190240454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62b7f32d847ff7%3A0x5bb0c5fdf7b576f7!2sSonsonate%2C%20El%20Salvador!5e0!3m2!1sen!2sbd!4v1736873340622!5m2!1sen!2sbd"
               width="400" height="300" loading="lazy"></iframe>
           </figure>
         </section>
@@ -1153,25 +1153,52 @@
         <section class="contact-form">
 
           <h3 class="h3 form-title">Contact Form</h3>
-
+        
           <form action="#" class="form" data-form>
-
+            <!-- Contenedor para los campos de texto -->
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <!-- Campo para el nombre completo -->
+              <input 
+                type="text" 
+                name="fullname" 
+                class="form-input" 
+                placeholder="Full name" 
+                required 
+                data-form-input>
+              <!-- Campo para el correo electrónico -->
+              <input 
+                type="email" 
+                name="email" 
+                class="form-input" 
+                placeholder="Email address" 
+                required 
+                data-form-input>
             </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
+        
+            <!-- Área de texto para el mensaje -->
+            <textarea 
+              name="message" 
+              class="form-input" 
+              placeholder="Your Message" 
+              required 
+              data-form-input></textarea>
+        
+            <!-- Botón de envío -->
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-
+        
+            <!-- Mensajes de retroalimentación -->
+            <div id="feedback" class="feedback-message"></div>
+            
           </form>
-
+          <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+          <script type="text/javascript">
+            emailjs.init('dkaVHq-zRca8Vw6Kb')
+          </script>
         </section>
+        
 
       </article>
 
