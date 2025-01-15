@@ -196,4 +196,26 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
 
   });
+  
 }
+document.addEventListener("DOMContentLoaded", function () {
+  // Crear el contenedor del lightbox
+  const lightbox = document.createElement("div");
+  lightbox.className = "lightbox-overlay";
+  document.body.appendChild(lightbox);
+
+  // Mostrar la imagen ampliada al hacer clic
+  document.querySelectorAll(".lightbox").forEach(item => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault(); // Evitar la acción por defecto del enlace
+      const imgSrc = this.href;
+      lightbox.innerHTML = `<img src="${imgSrc}" alt="Ampliado">`;
+      lightbox.style.display = "flex";
+    });
+  });
+
+  // Ocultar el lightbox al hacer clic fuera de la imagen
+  lightbox.addEventListener("click", function () {
+    lightbox.style.display = "none";
+  });
+});

@@ -17,12 +17,13 @@
 
 :root {
 
+  
+
   /**
    * colors
    */
 
   /* gradient */
-
   --bg-gradient-onyx: linear-gradient(
     to bottom right, 
     hsl(240, 1%, 25%) 3%, 
@@ -60,7 +61,7 @@
   --onyx: hsl(240, 1%, 17%);
   --eerie-black-1: hsl(240, 2%, 13%);
   --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
+  --smoky-black: hsl(0, 0%, 7%);;
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
   --orange-yellow-crayola: hsl(45, 100%, 72%);
@@ -157,6 +158,29 @@ html { font-family: var(--ff-poppins); }
 
 body { background: var(--smoky-black); }
 
+/* Estilo para el lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%; /* Limita la altura para permitir el scroll */
+  border: 5px solid white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-overlay {
+  overflow: auto; /* Activa el scroll si el contenido excede los límites */
+}
 
 
 
