@@ -112,25 +112,69 @@ for (let i = 0; i < filterBtn.length; i++) {
   });
 
 }
-
-// contact form variables
+//aqui empezamos
+// Variables del formulario
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
+const formStatus = document.getElementById("form-status");
 
-// add event to all form input field
+// Validar campos del formulario
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
-    // check form validation
+    // Verificar validación del formulario
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
 }
+
+// Manejar envío del formulario
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  // Cambiar el estado a "Enviándose..."
+  formStatus.textContent = "Enviándose...";
+  formStatus.style.color = "blue";
+  formBtn.disabled = true; // Deshabilitar botón mientras se envía
+
+  const formData = new FormData(form);
+
+  // Enviar datos al servidor
+  fetch("http://localhost:3000/send-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      fullname: formData.get("fullname"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data); // Verifica qué responde el servidor
+      if (data.status === "success") {
+        formStatus.textContent = "Mensaje enviado correctamente.";
+        formStatus.style.color = "green";
+      } else {
+        formStatus.textContent = "No se pudo enviar el mensaje.";
+        formStatus.style.color = "red";
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      formStatus.textContent = "Error al enviar el mensaje.";
+      formStatus.style.color = "red";
+    })
+    .finally(() => {
+      formBtn.disabled = false; // Habilitar el botón después del envío
+    });
+});
+
+// aqui estamos
+
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
